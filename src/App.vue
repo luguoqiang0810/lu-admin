@@ -1,30 +1,23 @@
-<script setup lang="ts">
-import HelloWorld from './components/HelloWorld.vue'
-</script>
-
+<!--
+ * @Author: lgq
+ * @Date: 2024-07-08 16:53:41
+ * @LastEditors: lgq
+ * @LastEditTime: 2024-07-09 17:02:42
+ * @Description: file content
+ * @FilePath: \lu-admin\src\App.vue
+-->
 <template>
-  <div>
-    <a href="https://vitejs.dev" target="_blank">
-      <img src="/vite.svg" class="logo" alt="Vite logo" />
-    </a>
-    <a href="https://vuejs.org/" target="_blank">
-      <img src="./assets/vue.svg" class="logo vue" alt="Vue logo" />
-    </a>
-  </div>
-  <HelloWorld msg="Vite + Vue" />
+  <a-config-provider :theme="theme">
+    <router-view />
+  </a-config-provider>
 </template>
 
-<style scoped>
-.logo {
-  height: 6em;
-  padding: 1.5em;
-  will-change: filter;
-  transition: filter 300ms;
-}
-.logo:hover {
-  filter: drop-shadow(0 0 2em #646cffaa);
-}
-.logo.vue:hover {
-  filter: drop-shadow(0 0 2em #42b883aa);
-}
-</style>
+<script setup lang="ts">
+  import { reactive } from 'vue'
+  import Setting from '@/setting/index'
+
+  const { theme: themeAlias } = Setting
+  const theme = reactive(themeAlias)
+</script>
+
+<style scoped></style>
