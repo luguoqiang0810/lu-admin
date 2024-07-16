@@ -2,7 +2,7 @@
  * @Author: lgq
  * @Date: 2024-07-09 10:53:13
  * @LastEditors: lgq
- * @LastEditTime: 2024-07-09 15:57:27
+ * @LastEditTime: 2024-07-09 17:51:55
  * @Description: file content
  * @FilePath: \lu-admin\src\plugins\Vxe\index.ts
  */
@@ -149,6 +149,8 @@ const LazyVxeUI = (app: App) => {
 }
 
 const LazyVxeTable = (app: App) => {
+    console.log(app);
+    
     // app.use(VxeTable)
     // app.use(VxeColumn)
     // app.use(VxeColgroup)

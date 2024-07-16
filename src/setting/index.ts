@@ -2,7 +2,7 @@
  * @Author: lgq
  * @Date: 2024-07-09 15:01:53
  * @LastEditors: lgq
- * @LastEditTime: 2024-07-09 17:23:09
+ * @LastEditTime: 2024-07-09 17:48:26
  * @Description: file content
  * @FilePath: \lu-admin\src\setting\index.ts
  */
@@ -16,7 +16,7 @@ export default {
         mode: '',
         headerHeight: 60,
         headerBackground: '',
-        showFooter: true,
+        showFooter: false,
         footerHeight: 60
     }
 }

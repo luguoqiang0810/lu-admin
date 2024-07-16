@@ -2,7 +2,7 @@
  * @Author: lgq
  * @Date: 2024-07-09 15:25:34
  * @LastEditors: lgq
- * @LastEditTime: 2024-07-09 17:23:34
+ * @LastEditTime: 2024-07-09 17:51:35
  * @Description: file content
  * @FilePath: \lu-admin\src\components\System\Layout\main.vue
 -->
@@ -15,29 +15,34 @@
             <vxe-layout-body class="vxe-custom-layout-body">
                 <div>132456789</div>
             </vxe-layout-body>
-            <vxe-layout-footer fixed class="vxe-custom-layout-footer">
-              <div>底部</div>
-            </vxe-layout-footer>
+            <template v-if="showFooter">
+                <vxe-layout-footer fixed class="vxe-custom-layout-footer"></vxe-layout-footer>
+            </template>
         </vxe-layout-container>
     </div>
 </template>
 
 <script lang="ts" setup>
     import { ref, computed } from 'vue'
+    import { theme } from 'ant-design-vue';
     import Setting from '@/setting/index'
 
+    const { useToken } = theme;
+    const { token } = useToken();
+    
     const { layout } = Setting
     const {
         headerHeight: headerHeightAlias,
-        showFooter,
-        footerHeight: footerHeightAlias
+        showFooter: showFooterAlias,
+        footerHeight: footerHeightAlias,
+        headerBackground: headerBackgroundAlias
     } = layout
     
     const headerHeight = ref<string>(`${headerHeightAlias}px`)
     const footerHeight = ref<string>(`${footerHeightAlias}px`)
-    const heightDifference = computed(() => {
-        const footerHeightInternal = showFooter ? footerHeightAlias : 0
-        return `${headerHeightAlias + footerHeightInternal}px`
+    const showFooter = ref<boolean>(showFooterAlias)
+    const headerBackground = computed(() => {
+        return headerBackgroundAlias ? headerBackgroundAlias : token.value.colorPrimary
     })
 </script>
 
@@ -47,10 +52,7 @@
         height: 100vh;
         .vxe-custom-layout-header {
             height: v-bind(headerHeight);
-        }
-        .vxe-custom-layout-body {
-            flex-grow: initial;
-            height: calc(100vh - v-bind(heightDifference))
+            background: v-bind(headerBackground);
         }
         .vxe-custom-layout-footer {
             height: v-bind(footerHeight);
