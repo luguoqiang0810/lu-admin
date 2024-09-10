@@ -12,4 +12,8 @@
 
 <script lang="ts" setup>
     import Exception from '@/components/System/Exception/index.vue'
+    
+    defineOptions({
+        name: '403'
+    })
 </script>

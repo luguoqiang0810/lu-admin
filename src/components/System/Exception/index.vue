@@ -2,7 +2,7 @@
  * @Author: lgq
  * @Date: 2024-07-24 10:59:09
  * @LastEditors: lgq
- * @LastEditTime: 2024-07-24 11:13:04
+ * @LastEditTime: 2024-08-28 17:50:31
  * @Description: file content
  * @FilePath: \lu-admin\src\components\System\Exception\index.vue
 -->
@@ -16,10 +16,14 @@
 
 <script lang="ts" setup>
     interface Props {
-        status: '403' | '404' | '500'
-        title: string
-        subTitle: string
+        status?: '403' | '404' | '500'
+        title?: string
+        subTitle?: string
     }
 
-    defineProps<Props>()
+    withDefaults(defineProps<Props>(), {
+        status: '404',
+        title: '404',
+        subTitle: '抱歉，您访问的页面不存在。'
+    })
 </script>

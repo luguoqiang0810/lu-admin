@@ -2,7 +2,7 @@
  * @Author: lgq
  * @Date: 2024-07-18 15:24:49
  * @LastEditors: lgq
- * @LastEditTime: 2024-07-24 11:44:16
+ * @LastEditTime: 2024-09-04 14:26:11
  * @Description: file content
  * @FilePath: \lu-admin\src\components\System\Mixin\index.vue
 -->
@@ -12,9 +12,7 @@
 
         <vxe-layout-container>
             <vxe-layout-aside class="l-aside">
-                <Menu />
-                <!-- <div style="height: 800px">菜单</div>
-                <div style="height: 800px">菜单</div> -->
+                <Menu :data-source="layoutMenu.frontMenuList" />
             </vxe-layout-aside>
             
             <vxe-layout-container vertical>
@@ -33,6 +31,9 @@
     import Footer from '@/components/System/Footer/index.vue'
     import Module from '@/components/System/Layout/Module.vue'
     import Menu from '@/components/System/Menu/index.vue'
+    import { useLayoutMenu } from '@/plugins/Store/modules/menu'
+
+    const layoutMenu = useLayoutMenu()
 </script>
 
 <style lang="less" scoped>

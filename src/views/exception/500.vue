@@ -2,7 +2,7 @@
  * @Author: lgq
  * @Date: 2024-07-24 10:57:56
  * @LastEditors: lgq
- * @LastEditTime: 2024-07-24 11:16:09
+ * @LastEditTime: 2024-09-09 18:14:26
  * @Description: file content
  * @FilePath: \lu-admin\src\views\exception\500.vue
 -->
@@ -12,4 +12,8 @@
 
 <script lang="ts" setup>
     import Exception from '@/components/System/Exception/index.vue'
+    
+    defineOptions({
+        name: '404'
+    })
 </script>

@@ -2,7 +2,7 @@
  * @Author: lgq
  * @Date: 2024-07-09 17:52:59
  * @LastEditors: lgq
- * @LastEditTime: 2024-07-18 17:06:46
+ * @LastEditTime: 2024-09-02 15:58:47
  * @Description: file content
  * @FilePath: \lu-admin\src\components\System\Header\index.vue
 -->
@@ -86,6 +86,7 @@
         background: v-bind(headerBackground);
         padding: 0 24px;
         box-shadow: 0 1px 4px rgba(0, 21, 41, .12);
+        z-index: 11;
         .l-flex {
             width: 100%;
             height: 100%;

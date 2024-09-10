@@ -6,7 +6,7 @@ type Props = {
     name: string
 }
 
-const iconFont = (props: Props) => {
+export const iconFont = (props: Props) => {
     const { name } = props
 
     // @ts-ignore  

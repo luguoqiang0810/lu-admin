@@ -2,7 +2,7 @@
  * @Author: lgq
  * @Date: 2024-07-18 16:59:13
  * @LastEditors: lgq
- * @LastEditTime: 2024-07-18 17:52:42
+ * @LastEditTime: 2024-09-09 18:30:10
  * @Description: file content
  * @FilePath: \lu-admin\src\components\System\Layout\Module.vue
 -->
@@ -10,12 +10,19 @@
     <div class="l-body">
         <template v-if="showTabs">
             <div class="l-tabs-content">
-                <a-tabs v-model:activeKey="activeKey" hide-add type="editable-card" class="l-tabs">
-                    <a-tab-pane key="1111111" tab="1111111" :closable="false"></a-tab-pane>
-                    <a-tab-pane key="2222222" tab="2222222" :closable="true"></a-tab-pane>
-                    <a-tab-pane key="3333333" tab="3333333" :closable="true"></a-tab-pane>
-                    <a-tab-pane key="4444444" tab="4444444" :closable="true"></a-tab-pane>
-                    <a-tab-pane key="5555555" tab="5555555" :closable="true"></a-tab-pane>
+                <a-tabs v-model:activeKey="layoutMenu.tabsActiveKey" hide-add type="editable-card" class="l-tabs" @change="tabsChange">
+                    <a-tab-pane 
+                        v-for="item in layoutMenu.historyMenuList" 
+                        :key="item.key" 
+                        :closable="routerSetting.redirect !== item.key && layoutMenu.historyMenuList.length > 1"
+                    >
+                        <template #tab>
+                            <a-flex justify="space-between" align="center">
+                                <span>{{ item.label }}</span>
+                                <IconFont name="ReloadOutlined" class="l-tab-reload" />
+                            </a-flex>
+                        </template>
+                    </a-tab-pane>
                     <template #rightExtra>
                         <a-dropdown>
                             <a-button type="link">
@@ -32,17 +39,30 @@
                 </a-tabs>
             </div>
         </template>
-        <router-view />
+        <router-view #default="{ Component }">
+            <keep-alive :include="layoutMenu.keepAliveIncludes">
+                <component :is="Component" />
+            </keep-alive>
+        </router-view>
     </div>
 </template>
 
 <script lang="ts" setup>
-    import { ref } from 'vue'
+    import { useRouter } from 'vue-router'
     import Setting from '@/setting/index'
+    import { useLayoutMenu } from '@/plugins/Store/modules/menu'
 
-    const { layout } = Setting
+    const router = useRouter()
+    const { layout, router: routerSetting } = Setting
     const { showTabs } = layout
-    const activeKey = ref<string>('1111111')
+    const layoutMenu = useLayoutMenu()
+    const { setMenuActiveKey, getParentPath } = useLayoutMenu()
+
+    const tabsChange = async (targ: string) => {
+        await router.push(targ)
+        setMenuActiveKey(targ)
+        getParentPath()
+    }
 </script>
 
 <style lang="less" scoped>
@@ -53,6 +73,13 @@
             .l-tabs {
                 :deep(.ant-tabs-nav) {
                     padding-left: 16px;
+                }
+                :deep(.ant-tabs-tab-remove) {
+                    padding: 0;
+                }
+                .l-tab-reload {
+                    margin-right: 0;
+                    margin-left: 12px;
                 }
             }
         }
