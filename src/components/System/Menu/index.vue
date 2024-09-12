@@ -2,7 +2,7 @@
  * @Author: lgq
  * @Date: 2024-07-24 11:32:05
  * @LastEditors: lgq
- * @LastEditTime: 2024-09-09 17:53:23
+ * @LastEditTime: 2024-09-11 17:53:21
  * @Description: 菜单
  * @FilePath: \lu-admin\src\components\System\Menu\index.vue
 -->
@@ -17,10 +17,9 @@
 </template>
 
 <script lang="ts" setup>
-    import { watch, unref } from 'vue'
-    import { useRouter } from 'vue-router'
+    import { watch, unref, onMounted } from 'vue'
+    import { useRouter, useRoute } from 'vue-router'
     import { useLayoutMenu } from '@/plugins/Store/modules/menu'
-    
     import type { Menu } from '@/types/index'
     
     interface Props {
@@ -28,30 +27,45 @@
     }
     
     interface clickProps {
-        item: any
         key: string
-        keyPath: string[]
     }
 
     const props = withDefaults(defineProps<Props>(), {})
 
     const router = useRouter()
+    const route = useRoute()
     const layoutMenu = useLayoutMenu()
-    const { setHistoryMenuList, getParentPath } = useLayoutMenu()
+    const { setHistoryMenuList, getParentPath, setMenuActiveKey, setBreadcrumb } = useLayoutMenu()
+    const { meta, fullPath, name } = route
 
     // 点击菜单
-    const handleMenuClick = async ({ item, key }: clickProps) => {
+    const handleMenuClick = async ({ key }: clickProps) => {
         if (unref(layoutMenu.menuActiveKey)[0] === key) {
             return 
         }
         
         await router.push(key)
-        setHistoryMenuList({ key, label: item.title })
-        getParentPath()
     }
 
     watch(() => props.dataSource, () => {
         getParentPath()
+    })
+
+    
+    // 监听路由改变
+    watch(() => route.path, () => {
+        const { meta, fullPath, name } = route
+        setHistoryMenuList({ key: fullPath, label: meta.title, name })
+        getParentPath()
+        setMenuActiveKey(fullPath)
+        setBreadcrumb()
+    })
+
+    // 初始化页面tab和展开菜单
+    onMounted(() => {
+        setHistoryMenuList({ key: fullPath, label: meta.title, name })
+        getParentPath()
+        setBreadcrumb()
     })
 </script>
 

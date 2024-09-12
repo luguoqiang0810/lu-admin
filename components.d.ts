@@ -8,6 +8,8 @@ export {}
 declare module 'vue' {
   export interface GlobalComponents {
     ABadge: typeof import('ant-design-vue/es')['Badge']
+    ABreadcrumb: typeof import('ant-design-vue/es')['Breadcrumb']
+    ABreadcrumbItem: typeof import('ant-design-vue/es')['BreadcrumbItem']
     AButton: typeof import('ant-design-vue/es')['Button']
     AConfigProvider: typeof import('ant-design-vue/es')['ConfigProvider']
     ADropdown: typeof import('ant-design-vue/es')['Dropdown']
@@ -30,6 +32,7 @@ declare module 'vue' {
     Mixin: typeof import('./src/components/System/Mixin/index.vue')['default']
     Module: typeof import('./src/components/System/Layout/Module.vue')['default']
     Page: typeof import('./src/components/System/Layout/Page.vue')['default']
+    PageContainer: typeof import('./src/components/System/PageContainer/index.vue')['default']
     RouterLink: typeof import('vue-router')['RouterLink']
     RouterView: typeof import('vue-router')['RouterView']
     Sider: typeof import('./src/components/System/Sider/index.vue')['default']

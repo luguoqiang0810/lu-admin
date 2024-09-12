@@ -2,7 +2,7 @@
  * @Author: lgq
  * @Date: 2024-08-23 16:07:39
  * @LastEditors: lgq
- * @LastEditTime: 2024-09-03 10:27:14
+ * @LastEditTime: 2024-09-11 17:23:51
  * @Description: file content
  * @FilePath: \lu-admin\src\plugins\Router\routes.ts
  */
@@ -24,7 +24,7 @@ export const routes: AppRouteModule[] = [
         redirect: redirect,
         children: asyncRoutes,
         meta: {
-            title: 'Root'
+            title: '首页'
         }
     },
     {

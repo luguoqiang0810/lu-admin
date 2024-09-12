@@ -2,7 +2,7 @@
  * @Author: lgq
  * @Date: 2024-07-18 15:21:22
  * @LastEditors: lgq
- * @LastEditTime: 2024-09-09 11:26:38
+ * @LastEditTime: 2024-09-11 15:35:56
  * @Description: file content
  * @FilePath: \lu-admin\src\types\index.ts
  */
@@ -28,6 +28,7 @@ export interface RouterModule {
 export interface Menu {
     key: string
     label: any
+    name?: string | symbol | undefined
     title?: string
     icon?: VNode | ((item: Menu) => VNode) | string;
     children?: Menu[]
