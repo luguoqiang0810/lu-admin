@@ -58,7 +58,7 @@
     import { ref } from 'vue'
     import { useRouter } from 'vue-router'
     import Setting from '@/setting/index'
-    import { useLayoutMenu } from '@/plugins/Store/modules/menu'
+    import { useLayoutMenu } from '@/plugins/Store'
     import { theme } from 'ant-design-vue'
 
     const router = useRouter()

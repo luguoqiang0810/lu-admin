@@ -2,9 +2,9 @@ import { ref, shallowRef } from 'vue'
 import { defineStore } from 'pinia'
 import type { Recordable } from '@/types/index'
 
-export const useUserStore = defineStore('userInfo', () => {
+const useUserStore = defineStore('userInfo', () => {
     const userInfo = shallowRef<Recordable>()
-    const token = ref<string>('132456')
+    const token = ref<string>('52ee0090-8836-4027-ab75-e0b25898db85')
     const permission = ref<string[]>([])
 
     // 设置用户信息
@@ -32,3 +32,4 @@ export const useUserStore = defineStore('userInfo', () => {
     }
 })
 
+export default useUserStore

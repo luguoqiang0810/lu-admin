@@ -19,7 +19,7 @@
 <script lang="ts" setup>
     import { watch, unref, onMounted } from 'vue'
     import { useRouter, useRoute } from 'vue-router'
-    import { useLayoutMenu } from '@/plugins/Store/modules/menu'
+    import { useLayoutMenu } from '@/plugins/Store'
     import type { Menu } from '@/types/index'
     
     interface Props {

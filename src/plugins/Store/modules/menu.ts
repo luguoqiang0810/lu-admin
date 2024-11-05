@@ -2,7 +2,7 @@
  * @Author: lgq
  * @Date: 2024-08-29 11:22:18
  * @LastEditors: lgq
- * @LastEditTime: 2024-09-11 18:17:08
+ * @LastEditTime: 2024-09-12 14:35:32
  * @Description: file content
  * @FilePath: \lu-admin\src\plugins\Store\modules\menu.ts
  */
@@ -14,7 +14,7 @@ import Setting from '@/setting/index'
 import type { Menu } from '@/types/index'
 import type { RouteRecord } from 'vue-router'
 
-export const useLayoutMenu = defineStore('layoutMenu', () => {
+const useLayoutMenu = defineStore('layoutMenu', () => {
 
     const router = useRouter()
     const route = useRoute()
@@ -82,3 +82,5 @@ export const useLayoutMenu = defineStore('layoutMenu', () => {
         setBreadcrumb
     }
 })
+
+export default useLayoutMenu

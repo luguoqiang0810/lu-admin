@@ -2,7 +2,7 @@
  * @Author: lgq
  * @Date: 2024-09-11 16:40:25
  * @LastEditors: lgq
- * @LastEditTime: 2024-09-12 10:37:38
+ * @LastEditTime: 2024-09-12 16:38:09
  * @Description: file content
  * @FilePath: \lu-admin\src\components\System\PageContainer\index.vue
 -->
@@ -25,7 +25,7 @@
 </template>
 
 <script lang="ts" setup>
-    import { useLayoutMenu } from '@/plugins/Store/modules/menu'
+    import { useLayoutMenu } from '@/plugins/Store'
 
     interface Props {
         showBreadcrumb?: boolean

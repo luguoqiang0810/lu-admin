@@ -2,7 +2,7 @@
  * @Author: lgq
  * @Date: 2024-07-18 15:24:49
  * @LastEditors: lgq
- * @LastEditTime: 2024-09-04 14:26:11
+ * @LastEditTime: 2024-09-12 14:37:58
  * @Description: file content
  * @FilePath: \lu-admin\src\components\System\Mixin\index.vue
 -->
@@ -31,7 +31,7 @@
     import Footer from '@/components/System/Footer/index.vue'
     import Module from '@/components/System/Layout/Module.vue'
     import Menu from '@/components/System/Menu/index.vue'
-    import { useLayoutMenu } from '@/plugins/Store/modules/menu'
+    import { useLayoutMenu } from '@/plugins/Store'
 
     const layoutMenu = useLayoutMenu()
 </script>

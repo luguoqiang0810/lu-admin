@@ -2,7 +2,7 @@
  * @Author: lgq
  * @Date: 2024-07-08 16:53:41
  * @LastEditors: lgq
- * @LastEditTime: 2024-07-09 16:48:25
+ * @LastEditTime: 2024-11-01 16:06:21
  * @Description: file content
  * @FilePath: \lu-admin\vite.config.ts
  */
@@ -31,5 +31,21 @@ export default defineConfig({
         replacement: path.resolve(__dirname, './src')
       }
     ]
+  },
+  server: {
+    proxy: {
+      '/api': {
+        target: 'https://cn.bing.com',
+        changeOrigin: true,
+        ws: true,
+        rewrite: (path) => path.replace(new RegExp(`^/api`), '')
+      },
+      '/mtc': {
+        target: 'https://saas.pdeepmatrix.com/gateway/mtc',
+        changeOrigin: true,
+        ws: true,
+        rewrite: (path) => path.replace(new RegExp(`^/mtc`), '')
+      }
+    }
   }
 })

@@ -2,7 +2,7 @@
  * @Author: lgq
  * @Date: 2024-07-09 15:25:34
  * @LastEditors: lgq
- * @LastEditTime: 2024-09-04 16:20:32
+ * @LastEditTime: 2024-09-12 14:37:38
  * @Description: file content
  * @FilePath: \lu-admin\src\components\System\Layout\Main.vue
 -->
@@ -16,7 +16,7 @@
 <script lang="ts" setup>
     import { markRaw, onMounted, ref } from 'vue'
     import { useRoute } from 'vue-router'
-    import { useUserStore } from '@/plugins/Store/modules/user'
+    import { useUserStore } from '@/plugins/Store'
     import Setting from '@/setting/index'
     import { Recordable } from '@/types/index'
     import Sider from '@/components/System/Sider/index.vue'

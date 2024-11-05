@@ -2,17 +2,17 @@
  * @Author: lgq
  * @Date: 2024-08-26 11:01:42
  * @LastEditors: lgq
- * @LastEditTime: 2024-09-03 10:32:06
+ * @LastEditTime: 2024-11-05 15:37:47
  * @Description: file content
  * @FilePath: \lu-admin\src\plugins\Router\utils.ts
  */
 import { h } from 'vue'
 import nProgress from 'nprogress';
-import { RouterModule, AppRouteModule } from '@/types/index'
 import Setting from '@/setting/index'
-import { useUserStore } from '@/plugins/Store/modules/user'
-import { orderBy  } from 'xe-utils-es'
+import { useUserStore } from '@/plugins/Store'
+import { orderBy } from 'xe-utils-es'
 import { iconFont } from '@/plugins/Iconfont/index'
+import type { RouterModule, AppRouteModule } from '@/types/index'
 import type { Router } from 'vue-router'
 import type { Menu } from '@/types/index'
 
