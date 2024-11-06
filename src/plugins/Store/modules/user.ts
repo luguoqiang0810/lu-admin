@@ -4,7 +4,7 @@ import type { Recordable } from '@/types/index'
 
 const useUserStore = defineStore('userInfo', () => {
     const userInfo = shallowRef<Recordable>()
-    const token = ref<string>('')
+    const token = ref<string>('a683795b-2d17-4826-9859-a4ed1cc280e2')
     const permission = ref<string[]>([])
 
     // 设置用户信息

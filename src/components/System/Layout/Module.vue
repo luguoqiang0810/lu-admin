@@ -2,7 +2,7 @@
  * @Author: lgq
  * @Date: 2024-07-18 16:59:13
  * @LastEditors: lgq
- * @LastEditTime: 2024-09-11 17:49:50
+ * @LastEditTime: 2024-11-05 19:11:37
  * @Description: file content
  * @FilePath: \lu-admin\src\components\System\Layout\Module.vue
 -->
@@ -26,7 +26,7 @@
                         <template #tab>
                             <a-flex justify="space-between" align="center">
                                 <span>{{ item.label }}</span>
-                                <IconFont v-if="layoutMenu.tabsActiveKey === item.key" name="ReloadOutlined" class="l-tab-reload" />
+                                <IconFont v-if="layoutMenu.tabsActiveKey === item.key" name="ReloadOutlined" class="l-tab-reload" @click.native="refreshUnit" />
                             </a-flex>
                         </template>
                     </a-tab-pane>
@@ -46,9 +46,9 @@
                 </a-tabs>
             </div>
         </template>
-        <router-view #default="{ Component }">
-            <keep-alive :include="layoutMenu.keepAliveIncludes">
-                <component :is="Component" />
+        <router-view #default="{ Component }" :key="unitKey">
+            <keep-alive :include="[...layoutMenu.keepAliveIncludes, 'Page']">
+                <component :is="Component"/>
             </keep-alive>
         </router-view>
     </div>
@@ -57,29 +57,37 @@
 <script lang="ts" setup>
     import { ref } from 'vue'
     import { useRouter } from 'vue-router'
+    import { theme } from 'ant-design-vue'
+    import { uniqueId } from 'xe-utils-es'
     import Setting from '@/setting/index'
     import { useLayoutMenu } from '@/plugins/Store'
-    import { theme } from 'ant-design-vue'
 
     const router = useRouter()
     const layoutMenu = useLayoutMenu()
-    const { setMenuActiveKey, removeHistoryMenuList } = useLayoutMenu()
+    const { removeHistoryMenuList } = useLayoutMenu()
     const { layout, router: routerSetting } = Setting
     const { showTabs } = layout
     const { useToken } = theme
     const { token } = useToken()
     const colorText = ref<string>(token.value.colorText)
     const colorPrimary = ref<string>(token.value.colorPrimary)
+    const unitKey = ref<string>(uniqueId('unit_'))
 
-    const tabsChange = async (targ: string) => {
-        await router.push(targ)
-        setMenuActiveKey(targ)
+    // 切换标签页
+    const tabsChange = (targ: string) => {
+        router.push(targ)
     }
-    
+
+    // 删除标签页
     const onEdit = (targetKey: string, action: string) => {
         if (action === 'remove') {
             removeHistoryMenuList(targetKey)
         }
+    }
+
+    // 刷新页面
+    const refreshUnit = () => {
+        unitKey.value = uniqueId('unit_')
     }
 </script>
 

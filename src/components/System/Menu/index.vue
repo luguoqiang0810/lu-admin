@@ -2,7 +2,7 @@
  * @Author: lgq
  * @Date: 2024-07-24 11:32:05
  * @LastEditors: lgq
- * @LastEditTime: 2024-09-11 17:53:21
+ * @LastEditTime: 2024-11-05 18:18:58
  * @Description: 菜单
  * @FilePath: \lu-admin\src\components\System\Menu\index.vue
 -->
@@ -43,7 +43,6 @@
         if (unref(layoutMenu.menuActiveKey)[0] === key) {
             return 
         }
-        
         await router.push(key)
     }
 

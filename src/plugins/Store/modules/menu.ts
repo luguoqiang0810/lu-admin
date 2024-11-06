@@ -2,7 +2,7 @@
  * @Author: lgq
  * @Date: 2024-08-29 11:22:18
  * @LastEditors: lgq
- * @LastEditTime: 2024-09-12 14:35:32
+ * @LastEditTime: 2024-11-05 19:02:34
  * @Description: file content
  * @FilePath: \lu-admin\src\plugins\Store\modules\menu.ts
  */
@@ -36,7 +36,6 @@ const useLayoutMenu = defineStore('layoutMenu', () => {
             historyMenuList.value.push(targ)
             keepAliveIncludes.value.push(targ.name as string)
         }
-        
         tabsActiveKey.value = targ.key
     }
 
@@ -54,6 +53,7 @@ const useLayoutMenu = defineStore('layoutMenu', () => {
     const removeHistoryMenuList = (targ: string) => {
         const index = historyMenuList.value.findIndex((item: Menu) => item.key === targ)
         historyMenuList.value.splice(index, 1)
+        keepAliveIncludes.value.splice(index, 1)
 
         if (targ === tabsActiveKey.value) {
             const showMenu = index === 0 ? historyMenuList.value[index] : historyMenuList.value[index - 1]
