@@ -2,23 +2,25 @@
  * @Author: lgq
  * @Date: 2024-08-29 11:22:18
  * @LastEditors: lgq
- * @LastEditTime: 2024-11-05 19:02:34
+ * @LastEditTime: 2024-11-22 16:27:34
  * @Description: file content
  * @FilePath: \lu-admin\src\plugins\Store\modules\menu.ts
  */
 import { ref } from 'vue';
 import { useRouter, useRoute } from 'vue-router'
 import { defineStore } from 'pinia'
-import { getMenus } from '@/plugins/Router/utils'
-import Setting from '@/setting/index'
-import type { Menu } from '@/types/index'
+import { getMenus, allRoutes } from '@/plugins/Router/hooks'
+import { configure } from '@/setting/index'
+import { findTree } from 'xe-utils-es'
+
+import type { Menu, AppRouteModule } from '@/types/index'
 import type { RouteRecord } from 'vue-router'
 
 const useLayoutMenu = defineStore('layoutMenu', () => {
 
     const router = useRouter()
     const route = useRoute()
-    const { layout } = Setting
+    const { layout } = configure
     const menuActiveKey = ref<string[]>([route.fullPath]); // 选中的菜单
     const menuOpenKeys = ref<string[]>([]) // 展开的菜单
     const frontMenuList = ref<Menu[]>(getMenus()) // 所有菜单
@@ -46,7 +48,8 @@ const useLayoutMenu = defineStore('layoutMenu', () => {
 
     // 默认展开菜单
     const getParentPath = () => {
-        menuOpenKeys.value = route.matched.map((item: RouteRecord) => item.path)
+        const paths = findTree(allRoutes, (item: AppRouteModule) => item.path === route.path).nodes.map((item: AppRouteModule) => item.path)
+        menuOpenKeys.value = paths
     }
     
     // 删除页面tab

@@ -2,7 +2,7 @@
  * @Author: lgq
  * @Date: 2024-07-18 15:21:22
  * @LastEditors: lgq
- * @LastEditTime: 2024-11-05 15:36:02
+ * @LastEditTime: 2024-11-22 09:55:24
  * @Description: file content
  * @FilePath: \lu-admin\src\types\index.ts
  */
@@ -18,7 +18,7 @@ export type Recordable<T = any> = {
 }
 
 export type AppRouteRecordRaw = RouteRecordRaw & {
-    componentAs?: string
+    filePath?: string
     sort?: number
     icon?: string
 }

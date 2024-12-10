@@ -2,7 +2,7 @@
  * @Author: lgq
  * @Date: 2024-07-17 16:34:22
  * @LastEditors: lgq
- * @LastEditTime: 2024-07-18 17:06:16
+ * @LastEditTime: 2024-11-22 10:26:37
  * @Description: file content
  * @FilePath: \lu-admin\src\components\System\Footer\index.vue
 -->
@@ -12,9 +12,9 @@
 
 <script lang="ts" setup>
     import { ref } from 'vue'
-    import Setting from '@/setting/index'
+    import { configure } from '@/setting/index'
     
-    const { layout } = Setting
+    const { layout } = configure
     const {
         showFooter: showFooterAlias,
         footerHeight: footerHeightAlias,

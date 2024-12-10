@@ -2,7 +2,7 @@
  * @Author: lgq
  * @Date: 2024-07-08 16:53:41
  * @LastEditors: lgq
- * @LastEditTime: 2024-11-01 16:06:21
+ * @LastEditTime: 2024-11-14 16:01:32
  * @Description: file content
  * @FilePath: \lu-admin\vite.config.ts
  */

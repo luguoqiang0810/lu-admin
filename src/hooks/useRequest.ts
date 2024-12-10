@@ -2,7 +2,7 @@
  * @Author: lgq
  * @Date: 2024-09-18 09:56:37
  * @LastEditors: lgq
- * @LastEditTime: 2024-11-05 15:42:25
+ * @LastEditTime: 2024-11-22 10:27:11
  * @Description: useRequest 方法根据 vue-hooks-plus 的 useRequest 二次封装而来，更详细的参数和方法可查看官方文档 https://inhiblabcore.github.io/docs/hooks/
  * @FilePath: \lu-admin\src\hooks\useRequest.ts
  */
@@ -10,7 +10,7 @@ import axios from 'axios'
 import useRequest from 'vue-hooks-plus/es/useRequest'
 import { notification, message } from 'ant-design-vue';
 import { useInterfaces, useUserStore } from '@/plugins/Store/index'
-import Setting from '@/setting/index'
+import { configure } from '@/setting/index'
 import { ResultEnum } from '@/enums/httpEnum'
 import type {
     AxiosInstance,
@@ -20,7 +20,7 @@ import type {
 } from 'axios';
 import type { ConfigProps, UseRequestOptions, ResResponse, UseRequestResult } from '@/types/index'
 
-const axiosInstance: AxiosInstance = axios.create(Setting.request as CreateAxiosDefaults)
+const axiosInstance: AxiosInstance = axios.create(configure.request as CreateAxiosDefaults)
 
 // 请求拦截器
 axiosInstance.interceptors.request.use(

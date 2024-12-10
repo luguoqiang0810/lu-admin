@@ -2,11 +2,11 @@
  * @Author: lgq
  * @Date: 2024-07-09 15:01:53
  * @LastEditors: lgq
- * @LastEditTime: 2024-09-18 16:01:04
+ * @LastEditTime: 2024-11-22 10:10:08
  * @Description: file content
  * @FilePath: \lu-admin\src\setting\index.ts
  */
-export default {
+export const configure = {
     systemName: 'LAdmin',
     router: {
         history: 'html5',

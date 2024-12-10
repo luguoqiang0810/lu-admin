@@ -2,31 +2,30 @@
  * @Author: lgq
  * @Date: 2024-08-26 11:01:42
  * @LastEditors: lgq
- * @LastEditTime: 2024-11-05 18:18:52
+ * @LastEditTime: 2024-11-22 16:18:40
  * @Description: file content
- * @FilePath: \lu-admin\src\plugins\Router\utils.ts
+ * @FilePath: \lu-admin\src\plugins\Router\hooks.ts
  */
 import { h } from 'vue'
-import nProgress from 'nprogress';
-import Setting from '@/setting/index'
+import { configure } from '@/setting/index'
 import { useUserStore } from '@/plugins/Store'
-import { orderBy } from 'xe-utils-es'
+import { orderBy, toTreeArray, clone } from 'xe-utils-es'
 import { iconFont } from '@/plugins/Iconfont/index'
+import nProgress from 'nprogress';
+
 import type { RouterModule, AppRouteModule } from '@/types/index'
 import type { Router } from 'vue-router'
 import type { Menu } from '@/types/index'
 
+nProgress.configure({ showSpinner: false })
+
 const modules: Record<string, RouterModule> = import.meta.glob('@/plugins/Router/modules/*.ts', { eager: true })
 const views = import.meta.glob('@/views/**/**.vue')
-const pageLayout = () => import(`@/components/System/Layout/Page.vue`)
+const { router } = configure
+const { whitePathList } = router
 const routeModuleList: AppRouteModule[] = [];
-const { whitePathList } = Setting.router
-
-const PAGE_LAYOUT = 'components/System/Layout/Page.vue'
 const PAGE_NOT_FOUND_NAME = 'PageNotFound';
 const LOGIN_PAGE = '/login'
-
-nProgress.configure({ showSpinner: false })
 
 // 加入到路由集合中
 Object.keys(modules).forEach((key) => {
@@ -34,25 +33,29 @@ Object.keys(modules).forEach((key) => {
     routeModuleList.push(mod);
 });
 
-// 路径转换
-const transformPathToComponent = (targ: AppRouteModule[]) => {
-    targ.forEach((mod) => {
-        if (mod.componentAs === PAGE_LAYOUT) {
-            mod.component = pageLayout
-        } else if (views[`/src/${mod.componentAs}`]) {
-            mod.component = views[`/src/${mod.componentAs}`]
-        } else {
-            console.error(new Error(`/src/${mod.componentAs} 路径文件不存在，请检查路径`))
-        }
+// 铺平路由树，过滤掉 Template 路由
+const coreRoutes = toTreeArray(clone(routeModuleList, true), { clear: true }).filter((item: AppRouteModule) => item.filePath !== 'Template')
 
-        if (mod.children) {
-            transformPathToComponent(mod.children)
-        }
-    })
+// 转换 filePath 为组件
+coreRoutes.forEach((item: AppRouteModule) => {
+    if (views[`/src/${item.filePath}`]) {
+        item.component = views[`/src/${item.filePath}`]
+    } else {
+        console.error(new Error(`/src/${item.filePath} 路径文件不存在，请检查路径`))
+    }
+})
+
+// 路由
+export const asyncRoutes = [...[], ...coreRoutes]
+
+// 所有路由
+export const allRoutes = routeModuleList
+
+// 路由守卫
+export const setupRouterGuard = (router: Router) => {
+    createProgressGuard(router)
+    createPermissionGuard(router)
 }
-transformPathToComponent(routeModuleList)
-
-export const asyncRoutes = [...[], ...routeModuleList];
 
 // 页面加载状态
 const createProgressGuard = (router: Router) => {
@@ -96,10 +99,15 @@ const createPermissionGuard = (router: Router) => {
     });
 }
 
-// 路由守卫
-export const setupRouterGuard = (router: Router) => {
-    createProgressGuard(router)
-    createPermissionGuard(router)
+// 获取菜单
+export const getMenus = () => {
+    // 排序
+    const sortMenus = orderBy(routeModuleList, 'sort')
+
+    // 整理成可用菜单
+    const menus = menuArrange(menuFilter(sortMenus))
+    
+    return menus
 }
 
 // 过滤隐藏的菜单
@@ -130,15 +138,4 @@ const menuArrange = (items: AppRouteModule[]) => {
 
         return menu
     })
-}
-
-// 获取菜单
-export const getMenus = () => {
-    // 排序
-    const sortMenus = orderBy(asyncRoutes, 'sort')
-
-    // 整理成可用菜单
-    const menus = menuArrange(menuFilter(sortMenus))
-    
-    return menus
 }

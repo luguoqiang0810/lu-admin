@@ -2,7 +2,7 @@
  * @Author: lgq
  * @Date: 2024-07-18 15:24:49
  * @LastEditors: lgq
- * @LastEditTime: 2024-09-12 14:37:58
+ * @LastEditTime: 2024-11-22 14:20:29
  * @Description: file content
  * @FilePath: \lu-admin\src\components\System\Mixin\index.vue
 -->
@@ -27,6 +27,7 @@
 </template>
 
 <script lang="ts" setup>
+    import { onMounted } from 'vue'
     import Header from '@/components/System/Header/index.vue'
     import Footer from '@/components/System/Footer/index.vue'
     import Module from '@/components/System/Layout/Module.vue'
@@ -34,6 +35,10 @@
     import { useLayoutMenu } from '@/plugins/Store'
 
     const layoutMenu = useLayoutMenu()
+
+    onMounted(() => {
+        console.log('000000000000000000');
+    })
 </script>
 
 <style lang="less" scoped>

@@ -2,7 +2,7 @@
  * @Author: lgq
  * @Date: 2024-07-09 17:52:59
  * @LastEditors: lgq
- * @LastEditTime: 2024-09-02 15:58:47
+ * @LastEditTime: 2024-11-22 10:25:46
  * @Description: file content
  * @FilePath: \lu-admin\src\components\System\Header\index.vue
 -->
@@ -58,13 +58,13 @@
 <script lang="ts" setup>
     import { ref, computed } from 'vue'
     import { theme } from 'ant-design-vue';
-    import Setting from '@/setting/index'
+    import { configure } from '@/setting/index'
     import Logo from '@/components/System/Logo/index.vue'
 
     const { useToken } = theme;
     const { token } = useToken();
     
-    const { layout } = Setting
+    const { layout } = configure
     const {
         headerHeight: headerHeightAlias,
         headerBackground: headerBackgroundAlias,

@@ -2,7 +2,7 @@
  * @Author: lgq
  * @Date: 2024-07-08 16:53:41
  * @LastEditors: lgq
- * @LastEditTime: 2024-09-04 16:18:12
+ * @LastEditTime: 2024-11-22 10:20:56
  * @Description: file content
  * @FilePath: \lu-admin\src\App.vue
 -->
@@ -14,9 +14,9 @@
 
 <script setup lang="ts">
     import { reactive } from 'vue'
-    import Setting from '@/setting/index'
+    import { configure } from '@/setting/index'
 
-    const { theme: themeAlias } = Setting
+    const { theme: themeAlias } = configure
     const theme = reactive(themeAlias)
 </script>
 

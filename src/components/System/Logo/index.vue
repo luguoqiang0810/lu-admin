@@ -2,7 +2,7 @@
  * @Author: lgq
  * @Date: 2024-07-18 11:21:37
  * @LastEditors: lgq
- * @LastEditTime: 2024-07-18 17:07:24
+ * @LastEditTime: 2024-11-22 10:21:21
  * @Description: file content
  * @FilePath: \lu-admin\src\components\System\Logo\index.vue
 -->
@@ -16,10 +16,10 @@
 <script lang="ts" setup>
     import { ref } from 'vue'
     import { theme } from 'ant-design-vue';
-    import Setting from '@/setting/index'
+    import { configure } from '@/setting/index'
     import logo from '@/assets/system/logo.png'
 
-    const { layout, systemName } = Setting
+    const { layout, systemName } = configure
     const { useToken } = theme;
     const { token } = useToken();
     const {

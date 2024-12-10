@@ -26,7 +26,8 @@
     "baseUrl": ".", // 用于解析非相对模块名称的基础目录
     "paths": {
       "@/*": ["src/*"]
-    }
+    },
+    "types": []
   },
   "include": ["src/**/*.ts", "src/**/*.tsx", "src/**/*.vue", "src/components/**/*.vue"]
 }

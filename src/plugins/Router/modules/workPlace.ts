@@ -9,7 +9,7 @@
 export default {
     path: '/workPlace',
     name: 'WorkPlace',
-    componentAs: 'views/workPlace/index.vue',
+    filePath: 'views/workPlace/index.vue',
     sort: 0,
     meta: {
         title: '工作台',
