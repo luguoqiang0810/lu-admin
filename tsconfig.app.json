@@ -29,5 +29,5 @@
     },
     "types": []
   },
-  "include": ["src/**/*.ts", "src/**/*.tsx", "src/**/*.vue", "src/components/**/*.vue"]
+  "include": ["src/**/*.ts", "src/**/*.tsx", "src/**/*.vue", "src/components/**/*.vue", "autoTools/**/*.ts", "autoTools/**/*.vue"]
 }
