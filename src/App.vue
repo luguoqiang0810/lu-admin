@@ -2,7 +2,7 @@
  * @Author: lgq
  * @Date: 2024-07-08 16:53:41
  * @LastEditors: lgq
- * @LastEditTime: 2024-12-10 16:08:31
+ * @LastEditTime: 2024-12-11 11:49:38
  * @Description: file content
  * @FilePath: \lu-admin\src\App.vue
 -->
@@ -19,13 +19,13 @@
 	import { useTitle } from 'vue-hooks-plus';
 	import zhCN from 'ant-design-vue/es/locale/zh_CN';
 
-	const { theme: themeAlias } = configure;
+	const { theme: themeAlias, systemName } = configure;
 	const theme = reactive(themeAlias);
 	const AsyncComp = import.meta.env.DEV
 		? defineAsyncComponent(() => import('./../autoTools/index.vue'))
 		: createCommentVNode();
 
-	useTitle('123');
+	useTitle(systemName);
 </script>
 
 <style scoped>
