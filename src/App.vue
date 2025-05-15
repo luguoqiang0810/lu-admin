@@ -2,15 +2,16 @@
  * @Author: lgq
  * @Date: 2025-04-24 15:29:22
  * @LastEditors: lgq
- * @LastEditTime: 2025-05-14 17:06:35
+ * @LastEditTime: 2025-05-15 09:36:20
  * @Description: file content
  * @FilePath: \lu-admin\src\App.vue
 -->
 <script setup lang="ts">
+	const AuxiliaryTool = import.meta.env.DEV ? defineAsyncComponent(() => import('./../auxiliaryTool/index.vue')) : null
+
 	const appStore = useAppStore()
 	const { theme } = storeToRefs(appStore)
 	const { antd } = useI18nLocale()
-	const AuxiliaryTool = import.meta.env.DEV ? defineAsyncComponent(() => import('./../auxiliaryTool/index.vue')) : null
 </script>
 
 <template>

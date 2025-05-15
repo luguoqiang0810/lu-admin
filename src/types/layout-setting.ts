@@ -17,6 +17,7 @@ export interface LayoutSetting {
 	headerBgColor?: string, // 头部背景色
 	locale?: string, // 语言
 	footer?: boolean, // 底部
+	scriptUrl?: string, // 脚本地址
 
 	// title?: string
 	// logo?: string
