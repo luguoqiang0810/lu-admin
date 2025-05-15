@@ -1,0 +1,17 @@
+.l-full {
+    width: 100%;
+    height: 100%;
+}
+.l-h-100 {
+    height: 100%;
+}
+.l-is-fixed {
+	position: sticky;
+    left: 0;
+	&.t-0 {
+		top: 0;
+	}
+	&.b-0 {
+		bottom: 0;
+	}
+}
