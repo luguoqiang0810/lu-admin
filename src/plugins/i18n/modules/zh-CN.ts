@@ -9,8 +9,8 @@
 import zhCN from 'ant-design-vue/es/locale/zh_CN'
 
 export default {
-	'zh-CN': {
+  'zh-CN': {
 
-	},
-	antd: zhCN,
+  },
+  'antd': zhCN,
 }

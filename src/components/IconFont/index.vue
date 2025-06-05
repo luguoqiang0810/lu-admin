@@ -2,30 +2,29 @@
  * @Author: lgq
  * @Date: 2025-05-15 11:30:58
  * @LastEditors: lgq
- * @LastEditTime: 2025-05-15 11:41:51
+ * @LastEditTime: 2025-05-30 09:36:31
  * @Description: file content
  * @FilePath: \lu-admin\src\components\IconFont\index.vue
 -->
 <script lang="ts" setup>
-	import { createFromIconfontCN } from '@ant-design/icons-vue';
+import { createFromIconfontCN } from '@ant-design/icons-vue'
 
-	interface Props {
-		name: string;
-	}
+interface Props {
+  name?: string
+}
 
-	const appStore = useAppStore()
+withDefaults(defineProps<Props>(), {
+  name: '',
+})
 
-	const props = withDefaults(defineProps<Props>(), {
-		name: ''
-	});
-
-	const IconFont = createFromIconfontCN({
-		scriptUrl: appStore.layoutSetting.scriptUrl,
-	});
+const appStore = useAppStore()
+const IconFont = createFromIconfontCN({
+  scriptUrl: appStore.layoutSetting.scriptUrl,
+})
 </script>
 
 <template>
-	<icon-font :type="name" />
+  <IconFont :type="name" />
 </template>
 
 <style scoped></style>

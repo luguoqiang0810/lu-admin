@@ -1,3 +1,4 @@
+import type { App } from 'vue'
 /*
  * @Author: lgq
  * @Date: 2025-04-25 17:48:08
@@ -7,10 +8,9 @@
  * @FilePath: \lu-admin\src\plugins\pinia\index.ts
  */
 import { createPinia } from 'pinia'
-import type { App } from 'vue'
 
 const pinia = createPinia()
 
 export function start(app: App) {
-    app.use(pinia)
+  app.use(pinia)
 }

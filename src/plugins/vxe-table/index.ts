@@ -8,11 +8,11 @@ import type { App } from 'vue'
  * @FilePath: \lu-admin\src\plugins\vxe-table\index.ts
  */
 import {
-    VxeColumn,
-    VxeTable,
+  VxeColumn,
+  VxeTable,
 } from 'vxe-table'
 
 export function start(app: App) {
-    app.use(VxeTable)
-    app.use(VxeColumn)
+  app.use(VxeTable)
+  app.use(VxeColumn)
 }

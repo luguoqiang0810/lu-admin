@@ -1,3 +1,12 @@
+<!--
+ * @Author: lgq
+ * @Date: 2025-04-24 15:29:22
+ * @LastEditors: lgq
+ * @LastEditTime: 2025-05-29 15:33:43
+ * @Description: file content
+ * @FilePath: \lu-admin\README.md
+-->
+
 # lu-admin
 
 ## 项目简介
@@ -30,15 +39,32 @@ pnpm lint
 
 ```
 
-<div style="background: rgba(16, 185, 129, .14); padding: 10px;">
+<div style="background: rgba(16, 185, 129, .14); padding: 10px; margin-bottom: 20px;">
 	<p>🛎️ 必须使用 Node.js 20 或更高版本</p>
 	<p>🛎️ 必须使用 pnpm 作为包管理器</p>
 	<p style="margin: 0; padding: 0;">🛎️ 添加 pinia 后，需要重新启动项目才能全局使用</p>
 </div>
 
-## 功能特性
+## IDE 必安插件
 
-## 技术栈
+- Vue - Official
+- Vue 3 Support - All In One
+- ESLint
+- Prettier
+- Git Graph
+
+## 代码规范
+
+为保证代码风格统一，请使用 <a href="https://code.visualstudio.com/" targ="_blank">Visual Studio Code</a> 做为开发 IDE ，框架源码里已提供相关配置文件，在保存代码时，会自动对当前文件进行代码格式化操作。
+
+### ESLint
+
+配置文件为 eslint.config.mjs，框架使用 antfu/eslint-config 做为基础规范
+
+<details>
+	<summary>TIP</summary>
+	通过修改.eslintignore 可忽略无需做代码规范校验的文件，例如在项目中导入了一些第三方的插件代码或组件代码，我们就可以将其进行忽略。
+</details>
 
 ## 项目结构
 

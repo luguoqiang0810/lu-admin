@@ -2,13 +2,15 @@
  * @Author: lgq
  * @Date: 2025-05-14 16:56:50
  * @LastEditors: lgq
- * @LastEditTime: 2025-05-15 10:48:33
+ * @LastEditTime: 2025-06-03 15:48:43
  * @Description: file content
  * @FilePath: \lu-admin\auxiliaryTool\index.vue
 -->
 
 <script setup lang="ts">
-	const SettingFilled = defineAsyncComponent(() => import(`@ant-design/icons-vue/SettingFilled`));
+	const SettingFilled = defineAsyncComponent(
+		() => import(`@ant-design/icons-vue/SettingFilled`)
+	);
 </script>
 
 <template>
