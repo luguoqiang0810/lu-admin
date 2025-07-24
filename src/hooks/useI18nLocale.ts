@@ -6,23 +6,25 @@
  * @Description: file content
  * @FilePath: \lu-admin\src\hooks\useI18nLocale.ts
  */
-import { i18n } from '@/plugins/i18n'
+import { i18n } from "@/plugins/i18n";
 
-export function useI18nLocale() {
+export const useI18nLocale = createSharedComposable(() => {
   // 多语言的信息
   const locale = computed<string>(() => {
-    if (!i18n)
-      return 'zh-CN'
-    return unref(i18n.global.locale)
-  })
+    if (!i18n) return "zh-CN";
+    return unref(i18n.global.locale);
+  });
 
   // 获取antd的多语言
   const antd = computed(() => {
-    return (i18n?.global?.getLocaleMessage?.(unref(locale)) as any)?.antd || undefined
-  })
+    return (
+      (i18n?.global?.getLocaleMessage?.(unref(locale)) as any)?.antd ||
+      undefined
+    );
+  });
 
   return {
     locale,
     antd,
-  }
-}
+  };
+});

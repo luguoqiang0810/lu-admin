@@ -1,8 +1,8 @@
 /*
  * @Author: lgq
  * @Date: 2025-04-24 15:29:22
- * @LastEditors: lgq
- * @LastEditTime: 2025-06-04 18:29:20
+ * @LastEditors: guoqiang.lu guoqiang.lu@percent.cn
+ * @LastEditTime: 2025-07-23 10:47:14
  * @Description: file content
  * @FilePath: \lu-admin\vite.config.ts
  */
@@ -17,6 +17,7 @@ import checker from "vite-plugin-checker";
 import { createHtmlPlugin } from "vite-plugin-html";
 import { lazyImport, VxeResolver } from "vite-plugin-lazy-import";
 import { compression } from "vite-plugin-compression2";
+import postcssNesting from "postcss-nesting";
 import Config from "./src/config/app";
 
 const baseSrc = fileURLToPath(new URL("./src", import.meta.url));
@@ -38,7 +39,7 @@ export default defineConfig({
       minify: true,
       inject: {
         data: {
-          title: Config.systemName,
+          title: "", // Config.systemName,
         },
       },
       entry: "/src/main.ts",
@@ -61,18 +62,23 @@ export default defineConfig({
     }),
     // 自动导入
     AutoImport({
-      imports: ["vue", "vue-router", "vue-i18n", "pinia"],
+      imports: ["vue", "vue-router", "vue-i18n", '@vueuse/core', "pinia"],
       dts: "types/auto-imports.d.ts", // 生成类型声明文件
       dirs: ["src/plugins/pinia/modules", "src/hooks"],
       resolvers: [VueHooksPlusResolver()],
     }),
-    // gzip压缩
+    // 压缩
     compression(),
     compression({
       exclude: [/\.(br)$/, /\.(gz)$/],
       algorithm: "brotliCompress",
     }),
   ],
+  css: {
+    postcss: {
+      plugins: [postcssNesting()],
+    },
+  },
   resolve: {
     alias: [
       {

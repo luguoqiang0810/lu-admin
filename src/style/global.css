@@ -1,0 +1,35 @@
+.l-full {
+  width: 100%;
+  height: 100%;
+}
+.l-h-100 {
+  height: 100%;
+}
+.l-is-fixed {
+  position: sticky;
+  left: 0;
+  &.t-0 {
+    top: 0;
+  }
+  &.b-0 {
+    bottom: 0;
+  }
+}
+.l-flex {
+  display: flex;
+  &.l-flex-col {
+    flex-direction: column;
+  }
+  &.l-flex-row {
+    flex-direction: row;
+  }
+  &.l-flex-1 {
+    flex: 1;
+  }
+  &.l-flex-align-center {
+    align-items: center;
+  }
+  &.l-flex-justify-center {
+    justify-content: center;
+  }
+}

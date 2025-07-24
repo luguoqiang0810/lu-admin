@@ -1,27 +1,28 @@
-import type { App } from 'vue'
 /*
-* @Author: lgq
-* @Date: 2025-04-24 15:29:22
- * @LastEditors: lgq
- * @LastEditTime: 2025-05-13 18:09:09
-* @Description: file content
+ * @Author: lgq
+ * @Date: 2025-04-24 15:29:22
+ * @LastEditors: guoqiang.lu
+ * @LastEditTime: 2025-07-23 14:50:15
+ * @Description: file content
  * @FilePath: \lu-admin\src\main.ts
-*/
-import { createApp } from 'vue'
-import Root from './App.vue'
-import { start as pluginsStart } from './plugins'
-import './style/index.scss'
+ */
+import { createApp } from "vue";
+import Root from "./App.vue";
+import { start as pluginsStart } from "./plugins";
+import "./style/index.css";
+import type { App } from "vue";
 
-async function start() {
-  const app: App = createApp(Root)
-  app.use(pluginsStart)
-  const mount = app.mount('#app')
+const start = async () => {
+  const app: App = createApp(Root);
+  await pluginsStart(app);
+
+  const mount = app.mount("#app");
   mount.$nextTick(() => {
-    const loadingScreen = document.querySelector('.loading-screen')
+    const loadingScreen = document.querySelector(".loading-screen");
     if (loadingScreen) {
-      loadingScreen.remove()
+      loadingScreen.remove();
     }
-  })
-}
+  });
+};
 
-start()
+start();

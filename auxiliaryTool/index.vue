@@ -1,22 +1,26 @@
 <!--
  * @Author: lgq
  * @Date: 2025-05-14 16:56:50
- * @LastEditors: lgq
- * @LastEditTime: 2025-06-03 15:48:43
+ * @LastEditors: guoqiang.lu
+ * @LastEditTime: 2025-07-23 11:24:58
  * @Description: file content
  * @FilePath: \lu-admin\auxiliaryTool\index.vue
 -->
-
 <script setup lang="ts">
-	const SettingFilled = defineAsyncComponent(
-		() => import(`@ant-design/icons-vue/SettingFilled`)
-	);
+	const SettingFilled = defineAsyncComponent(() => import(`@ant-design/icons-vue/SettingFilled`));
+  const ToolPopup = defineAsyncComponent(() => import('./components/ToolPopup/index.vue'));
+  const toolPopupRef = useTemplateRef('toolPopupRef');
+
+  const openPopup = () => {
+    toolPopupRef.value.openPopup();
+  };
 </script>
 
 <template>
 	<div class="l-entry-button">
-		<SettingFilled spin />
+		<SettingFilled spin @click="openPopup" />
 	</div>
+  <ToolPopup ref="toolPopupRef" />
 </template>
 
 <style scoped lang="scss">

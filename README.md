@@ -1,8 +1,8 @@
 <!--
  * @Author: lgq
  * @Date: 2025-04-24 15:29:22
- * @LastEditors: lgq
- * @LastEditTime: 2025-05-29 15:33:43
+ * @LastEditors: guoqiang.lu guoqiang.lu@percent.cn
+ * @LastEditTime: 2025-07-23 10:48:30
  * @Description: file content
  * @FilePath: \lu-admin\README.md
 -->
@@ -49,22 +49,16 @@ pnpm lint
 
 - Vue - Official
 - Vue 3 Support - All In One
-- ESLint
-- Prettier
 - Git Graph
 
 ## 代码规范
 
 为保证代码风格统一，请使用 <a href="https://code.visualstudio.com/" targ="_blank">Visual Studio Code</a> 做为开发 IDE ，框架源码里已提供相关配置文件，在保存代码时，会自动对当前文件进行代码格式化操作。
 
-### ESLint
+TIP
+通过修改.eslintignore 可忽略无需做代码规范校验的文件，例如在项目中导入了一些第三方的插件代码或组件代码，我们就可以将其进行忽略。
 
-配置文件为 eslint.config.mjs，框架使用 antfu/eslint-config 做为基础规范
-
-<details>
-	<summary>TIP</summary>
-	通过修改.eslintignore 可忽略无需做代码规范校验的文件，例如在项目中导入了一些第三方的插件代码或组件代码，我们就可以将其进行忽略。
-</details>
+本项目没有使用 CSS 预处理器，而是使用 实现 CSSWG 草案的 PostCSS 插件（postcss-nesting）来编写简单的、符合未来标准的 CSS。
 
 ## 项目结构
 
